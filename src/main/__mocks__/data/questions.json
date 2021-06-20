@@ -1,0 +1,29 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "category": "CATEGORY 0",
+      "type": "TYPE 0",
+      "difficulty": "DIFFICULTY 0",
+      "question": "QUESTION 0",
+      "correct_answer": "CORRECT 0",
+      "incorrect_answers": ["INCORRECT 0 0", "INCORRECT 0 1", "INCORRECT 0 2"]
+    },
+    {
+      "category": "CATEGORY 1",
+      "type": "TYPE 1",
+      "difficulty": "DIFFICULTY 1",
+      "question": "QUESTION 1",
+      "correct_answer": "CORRECT 1",
+      "incorrect_answers": ["INCORRECT 1 0", "INCORRECT 1 1", "INCORRECT 1 2"]
+    },
+    {
+      "category": "CATEGORY 2",
+      "type": "TYPE 2",
+      "difficulty": "DIFFICULTY 2",
+      "question": "QUESTION 2",
+      "correct_answer": "CORRECT 2",
+      "incorrect_answers": ["INCORRECT 2 0", "INCORRECT 2 1", "INCORRECT 2 2"]
+    }
+  ]
+}
