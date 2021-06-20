@@ -18,10 +18,12 @@ const questionArgs = (index: number) => [
   [`INCORRECT ${index} 0`, `INCORRECT ${index} 1`, `INCORRECT ${index} 2`],
 ];
 
+const mockOptions = {host: "host", path: "path"};
+
 describe("QuestionFactory", () => {
   it("calls 'get' on new Request correctly", async () => {
     // Given
-    const questionFactory = new QuestionFactory();
+    const questionFactory = new QuestionFactory(mockOptions);
     // When
     await questionFactory.getQuestions();
     // Then
@@ -31,7 +33,7 @@ describe("QuestionFactory", () => {
 
   it("creates new Questions correctly", async () => {
     // Given
-    const questionFactory = new QuestionFactory();
+    const questionFactory = new QuestionFactory(mockOptions);
     // When
     await questionFactory.getQuestions();
     // Then

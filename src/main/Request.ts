@@ -1,7 +1,7 @@
 import { request } from "https";
 import { IncomingMessage } from "http";
 
-type Options = { host: string; path: string };
+export type Options = { host: string; path: string };
 
 class Request {
   constructor(private options: Options) {}

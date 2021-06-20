@@ -1,20 +1,19 @@
-import Request from "./Request";
+import Request, { Options } from "./Request";
 import Question from "./Question";
 
 class QuestionFactory {
   private static QUESTION = "question";
   private static CORRECT_ANSWER = "correct_answer";
   private static INCORRECT_ANSWERS = "incorrect_answers";
-  private static OPTIONS = {
-    host: "opentdb.com",
-    path: "/api.php?amount=10&category=9&difficulty=easy&type=multiple",
-  };
 
-  constructor() {}
+  private request: Request;
+
+  constructor(options: Options) {
+    this.request = new Request(options);
+  }
 
   public async getQuestions(): Promise<Question[]> {
-    const request = new Request(QuestionFactory.OPTIONS);
-    const result = await request.get();
+    const result = await this.request.get();
     const questionsJSON = JSON.parse(result).results;
     return questionsJSON.map(this.getQuestion);
   }
