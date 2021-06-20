@@ -1,4 +1,4 @@
-import Request from "../main/Request";
+import Request from "../Request";
 
 const responseOnFn = jest.fn((_: string, fn: Function) => fn());
 const requestOnFn = jest.fn((_: string, fn: Function) => fn());
