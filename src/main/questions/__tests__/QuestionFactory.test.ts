@@ -1,10 +1,10 @@
 import QuestionFactory from "../QuestionFactory";
 import Question from "../Question";
 // @ts-ignore
-import Request, { mockGet } from "../Request";
+import Request, { mockGet } from "../../Request";
 
 jest.mock("../Question");
-jest.mock("../Request");
+jest.mock("../../Request");
 
 beforeEach(() => {
   (<jest.Mock>Question).mockClear();

@@ -1,4 +1,4 @@
-import Request, { Options } from "./Request";
+import Request, { Options } from "../Request";
 import Question from "./Question";
 
 class QuestionFactory {
