@@ -11,14 +11,12 @@ const others: string[] = ["other 1", "other 1", "other 1"];
 const correctOption = "D";
 const otherOptions = ["A", "B", "C"];
 
-const expectedString = `${statement}
-
-A: ${others[0]}
-B: ${others[1]}
-C: ${others[2]}
-D: ${answer}
-
-`;
+const expectedOptions = {
+  A: others[0],
+  B: others[1],
+  C: others[2],
+  D: answer,
+};
 
 describe("Question", () => {
   it("'isCorrect' only returns true for correct answer", async () => {
@@ -31,10 +29,17 @@ describe("Question", () => {
     expect(question.isCorrect(otherOptions[2])).toEqual(false);
   });
 
-  it("'toString' returns correct string", async () => {
+  it("'statement' returns correct string", async () => {
     // Given
     const question = new Question(statement, answer, others);
     // When, Then
-    expect(question.toString()).toEqual(expectedString);
+    expect(question.statement).toEqual(statement);
+  });
+
+  it("'options' returns correct object", async () => {
+    // Given
+    const question = new Question(statement, answer, others);
+    // When, Then
+    expect(question.options).toEqual(expectedOptions);
   });
 });
