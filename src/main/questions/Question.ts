@@ -4,13 +4,12 @@ type OptionsObject = { [option: string]: string };
 
 class Question {
   private statement: string;
-  private answer: string;
-  private options: OptionsObject;
+  private answer: string = "";
+  private options: OptionsObject = {};
 
   constructor(statement: string, answer: string, others: string[]) {
     this.statement = decode(statement);
-    this.options = this.createOptionsObject([answer, ...others]);
-    this.answer = this.findAnswer(answer);
+    this.createOptionsObject(answer, others);
   }
 
   public isCorrect(answer: string): boolean {
@@ -18,7 +17,7 @@ class Question {
   }
 
   public toString(): string {
-    let str = this.statement
+    let str = this.statement;
     str += "\n\n";
     Object.entries(this.options).forEach((entry: [string, string]) => {
       str += `${entry[0]}: ${entry[1]}\n`;
@@ -27,19 +26,19 @@ class Question {
     return str;
   }
 
-  private createOptionsObject(options: string[]): OptionsObject {
-    const obj: OptionsObject = {};
-    this.shuffle(options).forEach((opt, i) => (obj[String.fromCharCode(i + 65)] = opt));
-    return obj;
+  private createOptionsObject(answer: string, others: string[]): void {
+    const positions = this.shuffledPositions(others.length + 1);
+    this.answer = this.charCode(positions[0]);
+    const options = [answer, ...others];
+    options.forEach((_, i) => (this.options[this.charCode(i)] = decode(options[positions[i]])));
   }
 
-  private shuffle(lst: string[]): string[] {
-    lst.sort(() => 2 * Math.random() - 1);
-    return lst.map((str) => decode(str));
+  private charCode(n: number): string {
+    return String.fromCharCode(n + 65);
   }
 
-  private findAnswer(answer: string): string {
-    return Object.keys(this.options).find((key) => this.options[key] === answer) || "";
+  private shuffledPositions(length: number): number[] {
+    return Array.from(Array(length).keys()).sort(() => 2 * Math.random() - 1);
   }
 }
 
