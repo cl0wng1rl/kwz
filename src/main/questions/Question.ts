@@ -1,14 +1,14 @@
 import { decode } from "html-entities";
 
-type OptionsObject = { [option: string]: string };
+export type OptionsObject = { [option: string]: string };
 
 class Question {
-  private statement: string;
+  private _statement: string;
+  private _options: OptionsObject = {};
   private answer: string = "";
-  private options: OptionsObject = {};
 
   constructor(statement: string, answer: string, others: string[]) {
-    this.statement = decode(statement);
+    this._statement = decode(statement);
     this.createOptionsObject(answer, others);
   }
 
@@ -16,10 +16,18 @@ class Question {
     return this.answer === answer;
   }
 
+  get statement(): string {
+    return this._statement;
+  }
+
+  get options(): OptionsObject {
+    return this._options;
+  }
+
   public toString(): string {
     let str = this.statement;
     str += "\n\n";
-    Object.entries(this.options).forEach((entry: [string, string]) => {
+    Object.entries(this._options).forEach((entry: [string, string]) => {
       str += `${entry[0]}: ${entry[1]}\n`;
     });
     str += "\n";
@@ -30,7 +38,7 @@ class Question {
     const positions = this.shuffledPositions(others.length + 1);
     this.answer = this.charCode(positions[0]);
     const options = [answer, ...others];
-    options.forEach((_, i) => (this.options[this.charCode(i)] = decode(options[positions[i]])));
+    options.forEach((_, i) => (this._options[this.charCode(i)] = decode(options[positions[i]])));
   }
 
   private charCode(n: number): string {

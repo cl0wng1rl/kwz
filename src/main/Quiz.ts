@@ -5,7 +5,7 @@ class Quiz {
   private questions: Question[];
   private player: Player;
   private score: number;
-  
+
   constructor(questions: Question[]) {
     this.player = new Player();
     this.questions = questions;
@@ -13,8 +13,8 @@ class Quiz {
   }
 
   public play() {
-    this.questions.forEach(q => {
-      const answer = this.player.ask(q.toString());
+    this.questions.forEach((q) => {
+      const answer = this.player.ask(q);
       const isCorrect = q.isCorrect(answer);
       this.score += isCorrect ? 1 : 0;
       console.log(isCorrect ? "Correct!" : "Wrong!");
