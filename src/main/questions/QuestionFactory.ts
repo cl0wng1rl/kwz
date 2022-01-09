@@ -2,9 +2,9 @@ import Request, { Options } from "../Request";
 import Question from "./Question";
 
 class QuestionFactory {
-  private static QUESTION = "question";
-  private static CORRECT_ANSWER = "correct_answer";
-  private static INCORRECT_ANSWERS = "incorrect_answers";
+  private static readonly QUESTION = "question";
+  private static readonly CORRECT_ANSWER = "correct_answer";
+  private static readonly INCORRECT_ANSWERS = "incorrect_answers";
 
   private request: Request;
 
