@@ -1,10 +1,15 @@
-import Request from './main/Request';
-import QuestionFactory from './main/QuestionFactory';
+import QuestionFactory from "./main/questions";
+import Quiz from "./main/Quiz";
+
 var options = {
-  host: 'opentdb.com',
-  path: '/api.php?amount=10&category=9&difficulty=easy&type=multiple'
+  host: "opentdb.com",
+  path: "/api.php?amount=10&category=9&difficulty=easy&type=multiple",
 };
-const request = new Request(options);
-new QuestionFactory(request).getQuestions().then(questions => {
-  questions.forEach(q => console.log(q));
-});
+
+main();
+
+async function main() {
+  const questions = await new QuestionFactory(options).getQuestions();
+  const quiz = new Quiz(questions);
+  quiz.play();
+}
