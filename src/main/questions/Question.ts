@@ -24,16 +24,6 @@ class Question {
     return this._options;
   }
 
-  public toString(): string {
-    let str = this.statement;
-    str += "\n\n";
-    Object.entries(this._options).forEach((entry: [string, string]) => {
-      str += `${entry[0]}: ${entry[1]}\n`;
-    });
-    str += "\n";
-    return str;
-  }
-
   private createOptionsObject(answer: string, others: string[]): void {
     const positions = this.shuffledPositions(others.length + 1);
     this.answer = this.charCode(positions[0]);
