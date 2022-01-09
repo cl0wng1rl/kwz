@@ -1,25 +1,35 @@
 import Player from "./Player";
+import Display from "./Display";
 import { Question } from "./questions";
 
 class Quiz {
   private questions: Question[];
   private player: Player;
+  private display: Display;
   private score: number;
 
   constructor(questions: Question[]) {
-    this.player = new Player();
     this.questions = questions;
+    this.player = new Player();
+    this.display = new Display();
     this.score = 0;
   }
 
   public play() {
-    this.questions.forEach((q) => {
-      const answer = this.player.ask(q);
-      const isCorrect = q.isCorrect(answer);
-      this.score += isCorrect ? 1 : 0;
-      console.log(isCorrect ? "Correct!" : "Wrong!");
-    });
-    console.log(`Score: ${this.score}/${this.questions.length}`);
+    this.questions.forEach((q) => this.askQuestion(q));
+    this.display.printScore(this.score, this.questions.length);
+  }
+
+  private askQuestion(question: Question): void {
+    this.display.printQuestion(question);
+    const isCorrect = this.getPlayerResponse(question);
+    this.display.printResponse(isCorrect);
+  }
+
+  private getPlayerResponse(question: Question): boolean {
+    const isCorrect = question.isCorrect(this.player.ask());
+    this.score += isCorrect ? 1 : 0;
+    return isCorrect;
   }
 }
 
