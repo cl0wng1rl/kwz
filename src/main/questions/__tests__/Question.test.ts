@@ -46,6 +46,6 @@ describe("Question", () => {
     // Given
     const question = new Question(statement, answer, others);
     // When, Then
-    expect(question.answer).toEqual(correctOption);
+    expect(question.answer).toEqual(answer);
   });
 });

@@ -17,7 +17,7 @@ class Question {
   }
 
   get answer(): string {
-    return this._answer;
+    return this._options[this._answer];
   }
 
   get options(): OptionsObject {
