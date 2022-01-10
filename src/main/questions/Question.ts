@@ -30,7 +30,7 @@ class Question {
 
   private createOptionsObject(answer: string, others: string[]): void {
     const positions = this.shuffledPositions(others.length + 1);
-    this._answer = this.charCode(positions[0]);
+    this._answer = this.charCode(positions.indexOf(0));
     const options = [answer, ...others];
     options.forEach((_, i) => (this._options[this.charCode(i)] = decode(options[positions[i]])));
   }
