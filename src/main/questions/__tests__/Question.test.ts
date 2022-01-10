@@ -1,5 +1,4 @@
 import Question from "../Question";
-// @ts-ignore
 
 beforeEach(() => {
   jest.spyOn(global.Math, "random").mockReturnValue(0);
