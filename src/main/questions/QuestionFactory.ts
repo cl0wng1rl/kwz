@@ -1,4 +1,4 @@
-import Request, { Options } from "../Request";
+import { Request } from "../request";
 import Question from "./Question";
 
 class QuestionFactory {
@@ -6,11 +6,7 @@ class QuestionFactory {
   private static readonly CORRECT_ANSWER = "correct_answer";
   private static readonly INCORRECT_ANSWERS = "incorrect_answers";
 
-  private request: Request;
-
-  constructor(options: Options) {
-    this.request = new Request(options);
-  }
+  constructor(private request: Request) {}
 
   public async getQuestions(): Promise<Question[]> {
     const result = await this.request.get();

@@ -1,10 +1,10 @@
 import QuestionFactory from "../QuestionFactory";
 import Question from "../Question";
 // @ts-ignore
-import Request, { mockGet } from "../../Request";
+import Request, { mockGet } from "../../request/Request";
 
 jest.mock("../Question");
-jest.mock("../../Request");
+jest.mock("../../request/Request");
 
 beforeEach(() => {
   (<jest.Mock>Question).mockClear();
@@ -18,12 +18,12 @@ const questionArgs = (index: number) => [
   [`INCORRECT ${index} 0`, `INCORRECT ${index} 1`, `INCORRECT ${index} 2`],
 ];
 
-const mockOptions = {host: "host", path: "path"};
+const mockOptions = { host: "host", path: "path" };
 
 describe("QuestionFactory", () => {
   it("calls 'get' on new Request correctly", async () => {
     // Given
-    const questionFactory = new QuestionFactory(mockOptions);
+    const questionFactory = new QuestionFactory(new Request(mockOptions));
     // When
     await questionFactory.getQuestions();
     // Then
@@ -33,7 +33,7 @@ describe("QuestionFactory", () => {
 
   it("creates new Questions correctly", async () => {
     // Given
-    const questionFactory = new QuestionFactory(mockOptions);
+    const questionFactory = new QuestionFactory(new Request(mockOptions));
     // When
     await questionFactory.getQuestions();
     // Then
