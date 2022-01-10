@@ -5,28 +5,32 @@ export type OptionsObject = { [option: string]: string };
 class Question {
   private _statement: string;
   private _options: OptionsObject = {};
-  private answer: string = "";
+  private _answer: string = "";
 
   constructor(statement: string, answer: string, others: string[]) {
     this._statement = decode(statement);
     this.createOptionsObject(answer, others);
   }
 
-  public isCorrect(answer: string): boolean {
-    return this.answer.toUpperCase() === answer.toUpperCase();
-  }
-
   get statement(): string {
     return this._statement;
+  }
+
+  get answer(): string {
+    return this._answer;
   }
 
   get options(): OptionsObject {
     return this._options;
   }
 
+  public isCorrect(answer: string): boolean {
+    return this._answer.toUpperCase() === answer.toUpperCase();
+  }
+
   private createOptionsObject(answer: string, others: string[]): void {
     const positions = this.shuffledPositions(others.length + 1);
-    this.answer = this.charCode(positions[0]);
+    this._answer = this.charCode(positions[0]);
     const options = [answer, ...others];
     options.forEach((_, i) => (this._options[this.charCode(i)] = decode(options[positions[i]])));
   }

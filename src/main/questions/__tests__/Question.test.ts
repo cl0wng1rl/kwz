@@ -41,4 +41,11 @@ describe("Question", () => {
     // When, Then
     expect(question.options).toEqual(expectedOptions);
   });
+
+  it("'answer' returns correct answer", async () => {
+    // Given
+    const question = new Question(statement, answer, others);
+    // When, Then
+    expect(question.answer).toEqual(correctOption);
+  });
 });
