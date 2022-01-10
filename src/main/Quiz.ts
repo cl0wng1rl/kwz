@@ -23,7 +23,7 @@ class Quiz {
   private askQuestion(question: Question): void {
     this.display.printQuestion(question);
     const isCorrect = this.getPlayerResponse(question);
-    this.display.printResponse(isCorrect);
+    this.display.printResponse(isCorrect, question.answer);
   }
 
   private getPlayerResponse(question: Question): boolean {

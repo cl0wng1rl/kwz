@@ -10,19 +10,22 @@ beforeEach(() => {
 });
 
 const statement: string = "statement";
+const correctAnswer = "Correct Answer";
 const options = {
-  A: "Option A",
+  A: correctAnswer,
   B: "Option B",
   C: "Option C",
   D: "Option D",
 };
 const correct = "Correct!";
-const incorrect = "Wrong!";
+const incorrect = `Wrong! The correct answer is "${Object.values(options)[0]}"`;
 
-const mockQuestion = () => {
+const mockQuestion = (isCorrect: boolean) => {
   (Question as jest.Mock).mockImplementation(() => ({
     statement: statement,
     options: options,
+    answer: Object.keys(options)[0],
+    isCorrect: jest.fn(() => isCorrect),
   }));
 };
 
@@ -31,7 +34,7 @@ const getMockQuestion = () => new Question(statement, options["A"], Object.value
 describe("Display", () => {
   it("'printQuestion' prints correct string", async () => {
     // Given
-    mockQuestion();
+    mockQuestion(true);
     const display = new Display();
     const mockQuestionInstance = getMockQuestion();
     // When
@@ -45,7 +48,7 @@ describe("Display", () => {
     // Given
     const display = new Display();
     // When
-    display.printResponse(true);
+    display.printResponse(true, correctAnswer);
     // Then
     expect(mockLog).toBeCalledWith(correct);
   });
@@ -54,14 +57,13 @@ describe("Display", () => {
     // Given
     const display = new Display();
     // When
-    display.printResponse(false);
+    display.printResponse(false, correctAnswer);
     // Then
     expect(mockLog).toBeCalledWith(incorrect);
   });
 
   it("'printScore' prints correct string", async () => {
     // Given
-    mockQuestion();
     const display = new Display();
     const score = 1,
       total = 2;

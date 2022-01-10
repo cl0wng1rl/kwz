@@ -6,8 +6,8 @@ class Display {
     Object.entries(question.options).forEach((value) => this.print(`${value[0]}: ${value[1]}`));
   }
 
-  public printResponse(isCorrect: boolean) {
-    this.print(isCorrect ? "Correct!" : "Wrong!");
+  public printResponse(isCorrect: boolean, correctAnswer: string) {
+    this.print(isCorrect ? "Correct!" : `Wrong! The correct answer is "${correctAnswer}"`);
   }
 
   public printScore(score: number, total: number) {
