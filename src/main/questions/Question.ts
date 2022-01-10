@@ -13,7 +13,7 @@ class Question {
   }
 
   public isCorrect(answer: string): boolean {
-    return this.answer === answer;
+    return this.answer.toUpperCase() === answer.toUpperCase();
   }
 
   get statement(): string {
