@@ -1,5 +1,5 @@
 import RequestBuilder from "./main/request";
-import QuestionFactory from "./main/questions";
+import { QuestionFactory } from "./main/questions";
 import Quiz from "./main/Quiz";
 
 main();

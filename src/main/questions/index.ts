@@ -1,4 +1,4 @@
-import QuestionFactory from "./QuestionFactory";
+import Question from "./Question";
 
-export default QuestionFactory;
-export { default as Question }  from "./Question";
+export default Question;
+export { default as QuestionFactory } from "./QuestionFactory";

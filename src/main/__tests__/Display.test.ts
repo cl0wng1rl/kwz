@@ -1,5 +1,5 @@
 import Display from "../Display";
-import { Question } from "../questions";
+import Question from "../questions";
 
 jest.mock("../questions/Question");
 
