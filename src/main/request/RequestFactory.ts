@@ -4,7 +4,7 @@ import QueryArguments from "./QueryArguments";
 import Request from "./Request";
 
 class RequestFactory {
-  public create(args: Arguments) {
+  public getQuestionRequest(args: Arguments) {
     const queryArgs = new QueryArguments(args);
     const query = new Query(queryArgs);
     return new Request(query.getOptions());

@@ -44,14 +44,14 @@ const getMockArguments = () =>
   new Arguments(numberOfQuestions, categoryCode, false, Difficulty.Easy);
 
 describe("RequestFactory", () => {
-  it("creates 'Request' correctly with set parameters", () => {
+  it("'getQuestionRequest' creates 'Request' correctly with set parameters", () => {
     // Given
     mockArguments();
     mockQueryArguments();
     mockQuery();
     const requestFactory = new RequestFactory();
     // When
-    requestFactory.create(getMockArguments());
+    requestFactory.getQuestionRequest(getMockArguments());
     // Then
     expect(Request).toBeCalledWith(options);
   });

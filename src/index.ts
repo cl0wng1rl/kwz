@@ -7,7 +7,7 @@ main();
 
 async function main() {
   const args = new CLI().run(process.argv);
-  const request = new RequestFactory().create(args);
+  const request = new RequestFactory().getQuestionRequest(args);
   const questions = await new QuestionFactory(request).getQuestions();
   const quiz = new Quiz(questions);
   quiz.play();
