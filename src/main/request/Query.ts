@@ -1,4 +1,5 @@
 import Request from "./Request";
+import QueryArguments from "./QueryArguments";
 
 export enum Difficulty {
   Easy = "easy",
@@ -19,12 +20,7 @@ class Query {
   private static readonly host: string = "opentdb.com";
   private path: string;
 
-  constructor(
-    private numberOfQuestions: number,
-    private categoryCode: number,
-    private difficulty: Difficulty,
-    private questionType: QuestionType
-  ) {
+  constructor(private args: QueryArguments) {
     this.path = this.createPath();
   }
 
@@ -51,19 +47,19 @@ class Query {
   }
 
   private getNumberParameter(): string {
-    return `amount=${this.numberOfQuestions}`;
+    return `amount=${this.args.numberOfQuestions}`;
   }
 
   private getCategoryParameter(): string | "" {
-    return this.categoryCode ? `category=${this.categoryCode}` : "";
+    return this.args.categoryCode ? `category=${this.args.categoryCode}` : "";
   }
 
   private getDifficultyParameter(): string | "" {
-    return this.difficulty != Difficulty.Any ? `difficulty=${this.difficulty}` : "";
+    return this.args.difficulty != Difficulty.Any ? `difficulty=${this.args.difficulty}` : "";
   }
 
   private getTypeParameter(): string | "" {
-    return this.questionType != QuestionType.Any ? `type=${this.questionType}` : "";
+    return this.args.questionType != QuestionType.Any ? `type=${this.args.questionType}` : "";
   }
 }
 
