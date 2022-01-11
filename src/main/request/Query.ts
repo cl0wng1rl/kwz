@@ -1,4 +1,4 @@
-import Request from "./Request";
+import CONSTANTS from "./constants";
 import QueryArguments from "./QueryArguments";
 
 export enum Difficulty {
@@ -17,7 +17,7 @@ export enum QuestionType {
 export type Options = { host: string; path: string };
 
 class Query {
-  private static readonly host: string = "opentdb.com";
+  private static readonly host: string = CONSTANTS.host;
   private path: string;
 
   constructor(private args: QueryArguments) {
@@ -29,7 +29,7 @@ class Query {
   }
 
   private createPath() {
-    return `/api.php?${this.getParametersPathPart()}`;
+    return `${CONSTANTS.questionAPI}${this.getParametersPathPart()}`;
   }
 
   private getParametersPathPart() {
@@ -47,19 +47,23 @@ class Query {
   }
 
   private getNumberParameter(): string {
-    return `amount=${this.args.numberOfQuestions}`;
+    return `${CONSTANTS.amount}${this.args.numberOfQuestions}`;
   }
 
   private getCategoryParameter(): string | "" {
-    return this.args.categoryCode ? `category=${this.args.categoryCode}` : "";
+    return this.args.categoryCode ? `${CONSTANTS.category}${this.args.categoryCode}` : "";
   }
 
   private getDifficultyParameter(): string | "" {
-    return this.args.difficulty != Difficulty.Any ? `difficulty=${this.args.difficulty}` : "";
+    return this.args.difficulty != Difficulty.Any
+      ? `${CONSTANTS.difficulty}${this.args.difficulty}`
+      : "";
   }
 
   private getTypeParameter(): string | "" {
-    return this.args.questionType != QuestionType.Any ? `type=${this.args.questionType}` : "";
+    return this.args.questionType != QuestionType.Any
+      ? `${CONSTANTS.type}${this.args.questionType}`
+      : "";
   }
 }
 
