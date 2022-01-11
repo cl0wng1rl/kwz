@@ -1,11 +1,13 @@
-import RequestBuilder from "./main/request";
+import CLI from "./main/cli";
+import RequestFactory from "./main/request";
 import { QuestionFactory } from "./main/questions";
 import Quiz from "./main/Quiz";
 
 main();
 
 async function main() {
-  const request = new RequestBuilder().build();
+  const args = new CLI().run(process.argv);
+  const request = new RequestFactory().create(args);
   const questions = await new QuestionFactory(request).getQuestions();
   const quiz = new Quiz(questions);
   quiz.play();
