@@ -1,4 +1,4 @@
-import Question from "./questions";
+import Question from "../questions";
 
 class Display {
   public printQuestion(question: Question) {

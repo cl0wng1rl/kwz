@@ -1,6 +1,6 @@
 import Player from "./Player";
 import Display from "./Display";
-import Question from "./questions";
+import Question from "../questions";
 
 class Quiz {
   private questions: Question[];

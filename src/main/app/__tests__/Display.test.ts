@@ -1,7 +1,7 @@
 import Display from "../Display";
-import MultipleChoiceQuestion from "../questions/MultipleChoiceQuestion";
+import MultipleChoiceQuestion from "../../questions/MultipleChoiceQuestion";
 
-jest.mock("../questions/MultipleChoiceQuestion");
+jest.mock("../../questions/MultipleChoiceQuestion");
 
 const mockLog = jest.fn();
 
