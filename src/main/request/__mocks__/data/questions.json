@@ -3,7 +3,7 @@
   "results": [
     {
       "category": "CATEGORY 0",
-      "type": "TYPE 0",
+      "type": "multiple",
       "difficulty": "DIFFICULTY 0",
       "question": "QUESTION 0",
       "correct_answer": "CORRECT 0",
@@ -11,7 +11,7 @@
     },
     {
       "category": "CATEGORY 1",
-      "type": "TYPE 1",
+      "type": "multiple",
       "difficulty": "DIFFICULTY 1",
       "question": "QUESTION 1",
       "correct_answer": "CORRECT 1",
@@ -19,11 +19,27 @@
     },
     {
       "category": "CATEGORY 2",
-      "type": "TYPE 2",
+      "type": "multiple",
       "difficulty": "DIFFICULTY 2",
       "question": "QUESTION 2",
       "correct_answer": "CORRECT 2",
       "incorrect_answers": ["INCORRECT 2 0", "INCORRECT 2 1", "INCORRECT 2 2"]
+    },
+    {
+      "category": "CATEGORY",
+      "type": "boolean",
+      "difficulty": "DIFFICULTY",
+      "question": "QUESTION",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "CATEGORY",
+      "type": "boolean",
+      "difficulty": "DIFFICULTY",
+      "question": "QUESTION",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
     }
   ]
 }

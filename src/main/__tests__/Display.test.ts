@@ -1,7 +1,7 @@
 import Display from "../Display";
-import { Question } from "../questions";
+import MultipleChoiceQuestion from "../questions/MultipleChoiceQuestion";
 
-jest.mock("../questions/Question");
+jest.mock("../questions/MultipleChoiceQuestion");
 
 const mockLog = jest.fn();
 
@@ -21,7 +21,7 @@ const correct = "Correct!";
 const incorrect = `Wrong! The correct answer is "${Object.values(options)[0]}"`;
 
 const mockQuestion = (isCorrect: boolean) => {
-  (Question as jest.Mock).mockImplementation(() => ({
+  (MultipleChoiceQuestion as jest.Mock).mockImplementation(() => ({
     statement: statement,
     options: options,
     answer: Object.keys(options)[0],
@@ -29,7 +29,8 @@ const mockQuestion = (isCorrect: boolean) => {
   }));
 };
 
-const getMockQuestion = () => new Question(statement, options["A"], Object.values(options));
+const getMockQuestion = () =>
+  new MultipleChoiceQuestion(statement, options["A"], Object.values(options));
 
 describe("Display", () => {
   it("'printQuestion' prints correct string", async () => {

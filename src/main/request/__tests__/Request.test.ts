@@ -19,7 +19,7 @@ const options = { host: "host", path: "path" };
 const expectFunctionsAreCalledCorrectly = () => {
   expect(mockRequestFunction).toBeCalled();
   expect(mockRequestFunction).toBeCalledWith(
-    expect.objectContaining(options), 
+    expect.objectContaining(options),
     expect.any(Function)
   );
   expect(responseOnFn).toBeCalledWith("data", expect.any(Function));
