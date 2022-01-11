@@ -1,13 +1,16 @@
 import QuestionFactory from "../QuestionFactory";
-import Question from "../Question";
+import MultipleChoiceQuestion from "../MultipleChoiceQuestion";
+import TrueOrFalseQuestion from "../TrueOrFalseQuestion";
 // @ts-ignore
 import Request, { mockGet } from "../../request/Request";
 
-jest.mock("../Question");
+jest.mock("../MultipleChoiceQuestion");
+jest.mock("../TrueOrFalseQuestion");
 jest.mock("../../request/Request");
 
 beforeEach(() => {
-  (<jest.Mock>Question).mockClear();
+  (<jest.Mock>MultipleChoiceQuestion).mockClear();
+  (<jest.Mock>TrueOrFalseQuestion).mockClear();
   (<jest.Mock>Request).mockClear();
   (<jest.Mock>mockGet).mockClear();
 });
@@ -17,6 +20,7 @@ const questionArgs = (index: number) => [
   `CORRECT ${index}`,
   [`INCORRECT ${index} 0`, `INCORRECT ${index} 1`, `INCORRECT ${index} 2`],
 ];
+const trueOrFalseQuestionArgs = (isTrue: boolean) => [`QUESTION`, isTrue];
 
 const mockOptions = { host: "host", path: "path" };
 
@@ -37,9 +41,11 @@ describe("QuestionFactory", () => {
     // When
     await questionFactory.getQuestions();
     // Then
-    expect(Question).toBeCalledTimes(3);
-    expect(Question).toBeCalledWith(...questionArgs(0));
-    expect(Question).toBeCalledWith(...questionArgs(1));
-    expect(Question).toBeCalledWith(...questionArgs(2));
+    expect(MultipleChoiceQuestion).toBeCalledTimes(3);
+    expect(MultipleChoiceQuestion).toBeCalledWith(...questionArgs(0));
+    expect(MultipleChoiceQuestion).toBeCalledWith(...questionArgs(1));
+    expect(MultipleChoiceQuestion).toBeCalledWith(...questionArgs(2));
+    expect(TrueOrFalseQuestion).toBeCalledWith(...trueOrFalseQuestionArgs(true));
+    expect(TrueOrFalseQuestion).toBeCalledWith(...trueOrFalseQuestionArgs(false));
   });
 });

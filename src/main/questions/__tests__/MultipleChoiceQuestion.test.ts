@@ -1,4 +1,4 @@
-import Question from "../Question";
+import MultipleChoiceQuestion from "../MultipleChoiceQuestion";
 
 beforeEach(() => {
   jest.spyOn(global.Math, "random").mockReturnValue(0);
@@ -17,10 +17,10 @@ const expectedOptions = {
   D: answer,
 };
 
-describe("Question", () => {
+describe("MultipleChoiceQuestion", () => {
   it("'isCorrect' only returns true for correct answer", async () => {
     // Given
-    const question = new Question(statement, answer, others);
+    const question = new MultipleChoiceQuestion(statement, answer, others);
     // When, Then
     expect(question.isCorrect(correctOption)).toEqual(true);
     expect(question.isCorrect(otherOptions[0])).toEqual(false);
@@ -30,21 +30,21 @@ describe("Question", () => {
 
   it("'statement' returns correct string", async () => {
     // Given
-    const question = new Question(statement, answer, others);
+    const question = new MultipleChoiceQuestion(statement, answer, others);
     // When, Then
     expect(question.statement).toEqual(statement);
   });
 
   it("'options' returns correct object", async () => {
     // Given
-    const question = new Question(statement, answer, others);
+    const question = new MultipleChoiceQuestion(statement, answer, others);
     // When, Then
     expect(question.options).toEqual(expectedOptions);
   });
 
   it("'answer' returns correct answer", async () => {
     // Given
-    const question = new Question(statement, answer, others);
+    const question = new MultipleChoiceQuestion(statement, answer, others);
     // When, Then
     expect(question.answer).toEqual(answer);
   });
