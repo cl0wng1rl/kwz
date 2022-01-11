@@ -13,8 +13,9 @@ const difficultyOption = new Option(CONSTANTS.difficultyFlags, CONSTANTS.difficu
 class CLI {
   public run(args: string[]): Arguments {
     const program = this.createCommand();
-    const mainAction = () => new App().playQuiz(this.getArguments(program.opts()));
-    program.action(mainAction);
+    program.action(this.getMainAction(program));
+    program.addCommand(this.createCategoriesCommand());
+
     program.parse(args);
     return this.getArguments(program.opts());
   }
@@ -29,6 +30,21 @@ class CLI {
       .addOption(categoryOption)
       .addOption(trueOrFalseOption)
       .addOption(difficultyOption);
+  }
+
+  private createCategoriesCommand(): Command {
+    return new Command()
+      .name(CONSTANTS.categoriesCommand)
+      .description(CONSTANTS.categoriesCommandDescription)
+      .action(this.getCategoriesAction());
+  }
+
+  private getMainAction(program: Command) {
+    return () => new App().playQuiz(this.getArguments(program.opts()));
+  }
+
+  private getCategoriesAction() {
+    return () => new App().readCategories();
   }
 }
 
