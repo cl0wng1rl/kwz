@@ -1,18 +1,18 @@
 const numberFlags = "-n, --number <number>";
-const numberDescription = "Number of questions";
+const numberDescription = "number of questions";
 const numberDefault = 10;
 
 const categoryFlags = "-c, --category <number>";
-const categoryDescription = "Category code";
+const categoryDescription = "category code";
 
 const difficultyFlags = "-d, --difficulty <difficulty>";
-const difficultyDescription = "Difficulty of the questions";
+const difficultyDescription = "difficulty of the questions";
 const difficultyOptions = ["easy", "medium", "hard"];
 const difficultyDefault = "";
 const difficultyDefaultDescription = "all";
 
 const trueOrFalseFlags = "-t, --true-or-false";
-const trueOrFalseDescription = "True-or-False questions";
+const trueOrFalseDescription = "true-or-false questions";
 
 const CONSTANTS = {
   numberFlags,
