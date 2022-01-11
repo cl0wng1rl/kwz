@@ -1,4 +1,4 @@
-import RequestBuilder from "./RequestBuilder";
+import RequestFactory from "./RequestFactory";
 
-export default RequestBuilder;
+export default RequestFactory;
 export { default as Request } from "./Request";
