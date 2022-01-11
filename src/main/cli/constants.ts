@@ -9,7 +9,7 @@ const difficultyFlags = "-d, --difficulty <difficulty>";
 const difficultyDescription = "Difficulty of the questions";
 const difficultyOptions = ["easy", "medium", "hard"];
 const difficultyDefault = "";
-const difficultyDefaultDescription = "Difficulty of the questions";
+const difficultyDefaultDescription = "all";
 
 const trueOrFalseFlags = "-t, --true-or-false";
 const trueOrFalseDescription = "True-or-False questions";
