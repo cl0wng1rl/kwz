@@ -1,6 +1,7 @@
 import { Command, Option, OptionValues } from "commander";
 import Arguments from "./Arguments";
 import CONSTANTS from "./constants";
+import App from "../app";
 
 const numberOption = new Option(CONSTANTS.numberFlags, CONSTANTS.numberDescription);
 const categoryOption = new Option(CONSTANTS.categoryFlags, CONSTANTS.categoryDescription);
@@ -12,6 +13,8 @@ const difficultyOption = new Option(CONSTANTS.difficultyFlags, CONSTANTS.difficu
 class CLI {
   public run(args: string[]): Arguments {
     const program = this.createCommand();
+    const mainAction = () => new App().run(this.getArguments(program.opts()));
+    program.action(mainAction);
     program.parse(args);
     return this.getArguments(program.opts());
   }

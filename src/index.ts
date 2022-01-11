@@ -1,6 +1,6 @@
-import App from "./main/app";
+import CLI from "./main/cli";
 main();
 
 async function main() {
-  new App().run(process.argv);
+  new CLI().run(process.argv);
 }

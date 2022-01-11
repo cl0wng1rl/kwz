@@ -17,6 +17,7 @@ jest.mock("commander", () => ({
   Command: jest.fn(() => ({
     parse: mockParse,
     opts: jest.fn(() => options),
+    action: jest.fn(),
     addOption: jest.fn().mockReturnThis(),
   })),
 }));
