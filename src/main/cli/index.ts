@@ -1,2 +1,4 @@
 import CLI from "./CLI";
-new CLI().run(process.argv);
+
+export default CLI;
+export { default as Arguments } from "./Arguments";
