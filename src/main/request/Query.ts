@@ -24,8 +24,8 @@ class Query {
     this.path = this.createPath();
   }
 
-  public getRequest(): Request {
-    return new Request({ host: Query.host, path: this.path });
+  public getOptions(): Options {
+    return { host: Query.host, path: this.path };
   }
 
   private createPath() {

@@ -1,7 +1,6 @@
 import Query, { Difficulty, QuestionType } from "../Query";
 import { Arguments } from "../../cli";
 import QueryArguments from "../QueryArguments";
-import Request from "../Request";
 
 jest.mock("../Request");
 jest.mock("../QueryArguments");
@@ -39,9 +38,9 @@ describe("Query", () => {
     mockQueryArguments();
     const query = new Query(getMockQueryArguments());
     // When
-    query.getRequest();
+    const options = query.getOptions();
     // Then
-    expect(Request).toBeCalledWith({ host: expectedHost, path: expectedPathWithParameters });
+    expect(options).toEqual({ host: expectedHost, path: expectedPathWithParameters });
   });
 
   it("'getRequest' returns correct request without parameters", async () => {
@@ -49,8 +48,8 @@ describe("Query", () => {
     mockDefaultQueryArguments();
     const query = new Query(getMockQueryArguments());
     // When
-    query.getRequest();
+    const options = query.getOptions();
     // Then
-    expect(Request).toBeCalledWith({ host: expectedHost, path: expectedPathWithoutParameters });
+    expect(options).toEqual({ host: expectedHost, path: expectedPathWithoutParameters });
   });
 });

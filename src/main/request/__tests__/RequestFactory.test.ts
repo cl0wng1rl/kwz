@@ -1,16 +1,20 @@
 import RequestFactory from "../RequestFactory";
+import Request from "../Request";
 import Query, { Difficulty, QuestionType } from "../Query";
 import QueryArguments from "../QueryArguments";
 import { Arguments } from "../../cli";
 
-jest.mock("../Query");
 jest.mock("../../cli/Arguments");
 jest.mock("../QueryArguments");
+jest.mock("../Query");
+jest.mock("../Request");
 
 const numberOfQuestions = 1;
 const categoryCode = 2;
 const difficulty = Difficulty.Hard;
 const questionType = QuestionType.TrueOrFalse;
+
+const options = { host: "host", path: "path" };
 
 const mockArguments = () => {
   (Arguments as jest.Mock).mockImplementation(() => ({
@@ -18,13 +22,6 @@ const mockArguments = () => {
     category: categoryCode,
     trueOrFalse: false,
     difficulty: Difficulty.Easy,
-  }));
-};
-
-const mockDefaultArguments = () => {
-  (Arguments as jest.Mock).mockImplementation(() => ({
-    trueOrFalse: false,
-    difficulty: "",
   }));
 };
 
@@ -37,6 +34,12 @@ const mockQueryArguments = () => {
   }));
 };
 
+const mockQuery = () => {
+  (Query as unknown as jest.Mock).mockImplementation(() => ({
+    getOptions: jest.fn(() => options),
+  }));
+};
+
 const getMockArguments = () =>
   new Arguments(numberOfQuestions, categoryCode, false, Difficulty.Easy);
 
@@ -45,10 +48,11 @@ describe("RequestFactory", () => {
     // Given
     mockArguments();
     mockQueryArguments();
+    mockQuery();
     const requestFactory = new RequestFactory();
     // When
     requestFactory.create(getMockArguments());
     // Then
-    expect(Query).toBeCalledWith(numberOfQuestions, categoryCode, difficulty, questionType);
+    expect(Request).toBeCalledWith(options);
   });
 });

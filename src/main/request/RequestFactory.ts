@@ -1,12 +1,13 @@
+import { Arguments } from "../cli";
 import Query from "./Query";
 import QueryArguments from "./QueryArguments";
-import { Arguments } from "../cli";
+import Request from "./Request";
 
 class RequestFactory {
   public create(args: Arguments) {
     const queryArgs = new QueryArguments(args);
     const query = new Query(queryArgs);
-    return query.getRequest();
+    return new Request(query.getOptions());
   }
 }
 
