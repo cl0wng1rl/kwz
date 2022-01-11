@@ -13,7 +13,7 @@ const difficultyOption = new Option(CONSTANTS.difficultyFlags, CONSTANTS.difficu
 class CLI {
   public run(args: string[]): Arguments {
     const program = this.createCommand();
-    const mainAction = () => new App().run(this.getArguments(program.opts()));
+    const mainAction = () => new App().playQuiz(this.getArguments(program.opts()));
     program.action(mainAction);
     program.parse(args);
     return this.getArguments(program.opts());
