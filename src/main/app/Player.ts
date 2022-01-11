@@ -1,7 +1,7 @@
-import * as readlineSync from "readline-sync";
+import { question } from "readline-sync";
 class Player {
   public ask(): string {
-    return readlineSync.question();
+    return question();
   }
 }
 
