@@ -14,6 +14,9 @@ const difficultyDefaultDescription = "all";
 const trueOrFalseFlags = "-t, --true-or-false";
 const trueOrFalseDescription = "true-or-false questions";
 
+const categoriesCommand = "categories";
+const categoriesCommandDescription = "print the list of categories and their codes";
+
 const CONSTANTS = {
   numberFlags,
   numberDescription,
@@ -27,6 +30,8 @@ const CONSTANTS = {
   difficultyDefaultDescription,
   trueOrFalseFlags,
   trueOrFalseDescription,
+  categoriesCommand,
+  categoriesCommandDescription,
 };
 
 export default CONSTANTS;
