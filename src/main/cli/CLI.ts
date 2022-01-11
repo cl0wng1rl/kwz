@@ -1,4 +1,5 @@
 import { Command, Option, OptionValues } from "commander";
+import Arguments from "./Arguments";
 import CONSTANTS from "./constants";
 
 const numberOption = new Option(CONSTANTS.numberFlags, CONSTANTS.numberDescription);
@@ -7,28 +8,6 @@ const trueOrFalseOption = new Option(CONSTANTS.trueOrFalseFlags, CONSTANTS.trueO
 const difficultyOption = new Option(CONSTANTS.difficultyFlags, CONSTANTS.difficultyDescription)
   .choices(CONSTANTS.difficultyOptions)
   .default(CONSTANTS.difficultyDefault, CONSTANTS.difficultyDefaultDescription);
-
-class Arguments {
-  constructor(
-    private _number: number | undefined,
-    private _category: number | undefined,
-    private _trueOrFalse: boolean,
-    private _difficulty: string
-  ) {}
-
-  get number(): number | undefined {
-    return this._number;
-  }
-  get category(): number | undefined {
-    return this._category;
-  }
-  get trueOrFalse(): boolean {
-    return this._trueOrFalse;
-  }
-  get difficulty(): string {
-    return this._difficulty;
-  }
-}
 
 class CLI {
   public run(args: string[]): Arguments {
