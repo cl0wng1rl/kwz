@@ -1,8 +1,9 @@
+import { Arguments } from "../../cli";
 import RequestFactory from "../RequestFactory";
 import Request from "../Request";
 import Query, { Difficulty, QuestionType } from "../Query";
 import QueryArguments from "../QueryArguments";
-import { Arguments } from "../../cli";
+import CONSTANTS from "../constants";
 
 jest.mock("../../cli/Arguments");
 jest.mock("../QueryArguments");
@@ -15,6 +16,7 @@ const difficulty = Difficulty.Hard;
 const questionType = QuestionType.TrueOrFalse;
 
 const options = { host: "host", path: "path" };
+const categoryOptions = { host: CONSTANTS.host, path: CONSTANTS.categoryAPI };
 
 const mockArguments = () => {
   (Arguments as jest.Mock).mockImplementation(() => ({
@@ -54,5 +56,14 @@ describe("RequestFactory", () => {
     requestFactory.getQuestionRequest(getMockArguments());
     // Then
     expect(Request).toBeCalledWith(options);
+  });
+
+  it("'getCategoryRequest' creates 'Request' correctly", () => {
+    // Given
+    const requestFactory = new RequestFactory();
+    // When
+    requestFactory.getCategoryRequest();
+    // Then
+    expect(Request).toBeCalledWith(categoryOptions);
   });
 });
