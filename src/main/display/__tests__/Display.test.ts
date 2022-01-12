@@ -73,4 +73,15 @@ describe("Display", () => {
     // Then
     expect(mockLog).toBeCalledWith(`Score: ${score}/${total}`);
   });
+
+  it("'printCategory' prints correct string", async () => {
+    // Given
+    const display = new Display();
+    const id = 1,
+      name = "name";
+    // When
+    display.printCategory(name, id);
+    // Then
+    expect(mockLog).toBeCalledWith(`${name}: ${id}`);
+  });
 });

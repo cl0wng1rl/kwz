@@ -14,6 +14,10 @@ class Display {
     this.print(`Score: ${score}/${total}`);
   }
 
+  public printCategory(name: string, id: number) {
+    this.print(`${name}: ${id}`);
+  }
+
   private print(message: string): void {
     console.log(message);
   }
