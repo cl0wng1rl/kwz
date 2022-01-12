@@ -4,7 +4,7 @@ import Quiz from "../Quiz";
 const mockPrintQuestion = jest.fn();
 const mockPrintResponse = jest.fn();
 const mockPrintScore = jest.fn();
-jest.mock("../Display", () => {
+jest.mock("../../display/Display", () => {
   return jest.fn().mockImplementation(() => ({
     printQuestion: mockPrintQuestion,
     printResponse: mockPrintResponse,

@@ -1,5 +1,5 @@
 import Player from "./Player";
-import Display from "./Display";
+import Display from "../display";
 import Question from "../questions";
 
 class Quiz {
