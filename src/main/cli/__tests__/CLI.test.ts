@@ -1,5 +1,4 @@
 import CLI from "../CLI";
-import Arguments from "../Arguments";
 
 const number = "number";
 const category = "category";
@@ -7,7 +6,12 @@ const trueOrFalse = "trueOrFalse";
 const difficulty = "difficulty";
 const options = { number, category, trueOrFalse, difficulty };
 
-jest.mock("../Arguments");
+jest.mock("../../categories/CategoryReader", () => ({ print: jest.fn() }));
+
+jest.mock("../../app/App", () => ({
+  playQuiz: jest.fn(),
+  readCategories: jest.fn(),
+}));
 
 const mockParse = jest.fn();
 jest.mock("commander", () => ({
@@ -17,8 +21,11 @@ jest.mock("commander", () => ({
   Command: jest.fn(() => ({
     parse: mockParse,
     opts: jest.fn(() => options),
-    action: jest.fn(),
+    action: jest.fn().mockReturnThis(),
     addOption: jest.fn().mockReturnThis(),
+    addCommand: jest.fn().mockReturnThis(),
+    name: jest.fn().mockReturnThis(),
+    description: jest.fn().mockReturnThis(),
   })),
 }));
 
@@ -32,14 +39,5 @@ describe("CLI", () => {
     cli.run(args);
     // Then
     expect(mockParse).toBeCalled();
-  });
-
-  it("'run' creates Arguments object correctly", () => {
-    // Given
-    const cli = new CLI();
-    // When
-    cli.run(args);
-    // Then
-    expect(Arguments).toBeCalledWith(number, category, trueOrFalse, difficulty);
   });
 });
