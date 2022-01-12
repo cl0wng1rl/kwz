@@ -1,7 +1,10 @@
 import RequestFactory from "../request";
+import Display from "../display";
 import CategoryFactory, { Category } from "./CategoryFactory";
 
 class CategoryReader {
+  private static readonly display = new Display();
+
   public async print() {
     const request = new RequestFactory().getCategoryRequest();
     const categories = await new CategoryFactory(request).getCategories();
@@ -9,7 +12,7 @@ class CategoryReader {
   }
 
   private static printCategory(category: Category) {
-    console.log(`${category.name}: ${category.id}`);
+    CategoryReader.display.printCategory(category.name, category.id);
   }
 }
 
