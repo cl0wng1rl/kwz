@@ -1,17 +1,15 @@
 import RequestFactory from "../request";
-
-type Category = { id: number; name: string };
+import CategoryFactory, { Category } from "./CategoryFactory";
 
 class CategoryReader {
   public async print() {
     const request = new RequestFactory().getCategoryRequest();
-    const categoryData = await request.get();
-    const categoryJSON = JSON.parse(categoryData);
-    const categories: Category[] = categoryJSON["trivia_categories"].map((data: any) => ({
-      id: Number.parseInt(data["id"]),
-      name: data["name"],
-    }));
-    categories.forEach((category) => console.log(`${category.name}: ${category.id}`));
+    const categories = await new CategoryFactory(request).getCategories();
+    categories.forEach(CategoryReader.printCategory);
+  }
+
+  private static printCategory(category: Category) {
+    console.log(`${category.name}: ${category.id}`);
   }
 }
 
