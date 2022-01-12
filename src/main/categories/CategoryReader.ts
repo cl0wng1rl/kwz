@@ -3,7 +3,11 @@ import Display from "../display";
 import CategoryFactory, { Category } from "./CategoryFactory";
 
 class CategoryReader {
-  private static readonly display = new Display();
+  private static display: Display;
+
+  constructor() {
+    CategoryReader.display = new Display();
+  }
 
   public async print() {
     const request = new RequestFactory().getCategoryRequest();
