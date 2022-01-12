@@ -1,5 +1,4 @@
-import { Command, Option, OptionValues } from "commander";
-import Arguments from "./Arguments";
+import { Command, Option } from "commander";
 import CONSTANTS from "./constants";
 import App from "../app";
 
@@ -11,17 +10,12 @@ const difficultyOption = new Option(CONSTANTS.difficultyFlags, CONSTANTS.difficu
   .default(CONSTANTS.difficultyDefault, CONSTANTS.difficultyDefaultDescription);
 
 class CLI {
-  public run(args: string[]): Arguments {
+  public run(args: string[]) {
     const program = this.createCommand();
-    program.action(this.getMainAction(program));
+    program.action(App.playQuiz);
     program.addCommand(this.createCategoriesCommand());
 
     program.parse(args);
-    return this.getArguments(program.opts());
-  }
-
-  private getArguments(options: OptionValues): Arguments {
-    return new Arguments(options.number, options.category, options.trueOrFalse, options.difficulty);
   }
 
   private createCommand(): Command {
@@ -36,15 +30,7 @@ class CLI {
     return new Command()
       .name(CONSTANTS.categoriesCommand)
       .description(CONSTANTS.categoriesCommandDescription)
-      .action(this.getCategoriesAction());
-  }
-
-  private getMainAction(program: Command) {
-    return () => new App().playQuiz(this.getArguments(program.opts()));
-  }
-
-  private getCategoriesAction() {
-    return () => new App().readCategories();
+      .action(App.readCategories);
   }
 }
 
