@@ -1,18 +1,25 @@
 import QuestionFactory from "../QuestionFactory";
 import MultipleChoiceQuestion from "../MultipleChoiceQuestion";
 import TrueOrFalseQuestion from "../TrueOrFalseQuestion";
-// @ts-ignore
-import Request, { mockGet } from "../../request/Request";
+import { Request } from "../../request";
+import { readFileSync } from "fs";
+
+const mockQuestions = readFileSync(__dirname + "/data/questions.json").toString();
 
 jest.mock("../MultipleChoiceQuestion");
 jest.mock("../TrueOrFalseQuestion");
-jest.mock("../../request/Request");
+
+const mockGet = jest.fn().mockReturnValue(mockQuestions);
+jest.mock("../../request/Request", () => {
+  return jest.fn().mockImplementation(() => ({
+    get: mockGet,
+  }));
+});
 
 beforeEach(() => {
   (<jest.Mock>MultipleChoiceQuestion).mockClear();
   (<jest.Mock>TrueOrFalseQuestion).mockClear();
   (<jest.Mock>Request).mockClear();
-  (<jest.Mock>mockGet).mockClear();
 });
 
 const questionArgs = (index: number) => [
