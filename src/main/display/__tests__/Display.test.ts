@@ -84,4 +84,15 @@ describe("Display", () => {
     // Then
     expect(mockLog).toBeCalledWith(`${name}: ${id}`);
   });
+
+  it("'printInvalidOption' prints correct string", async () => {
+    // Given
+    const display = new Display();
+    const options = ["A", "B", "C"];
+    // When
+    display.printInvalidOption(options);
+    // Then
+    const expected = `Invalid option! Enter ${options[0]}, ${options[1]} or ${options[2]}...`;
+    expect(mockLog).toBeCalledWith(expected);
+  });
 });
