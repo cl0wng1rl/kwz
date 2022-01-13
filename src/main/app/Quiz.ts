@@ -27,7 +27,8 @@ class Quiz {
   }
 
   private getPlayerResponse(question: Question): boolean {
-    const isCorrect = question.isCorrect(this.player.ask());
+    const options = Object.keys(question.options);
+    const isCorrect = question.isCorrect(this.player.ask(options));
     this.score += isCorrect ? 1 : 0;
     return isCorrect;
   }
