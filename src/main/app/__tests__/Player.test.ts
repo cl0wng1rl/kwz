@@ -1,31 +1,38 @@
 import Player from "../Player";
-import { question } from "readline-sync";
 
-const response = "response";
-const mockedQuestion = jest.fn(() => "response");
+const mockInvalidResponse = "invalid response";
+const mockValidResponse = "valid response";
+let mockResponses = [mockInvalidResponse, mockValidResponse];
 
-jest.mock("readline-sync");
+beforeEach(() => (mockResponses = [mockValidResponse, mockInvalidResponse]));
 
-const mockQuestion = () => {
-  (question as jest.Mock).mockImplementation(mockedQuestion);
-};
+jest.mock("readline-sync", () => ({
+  question: () => mockResponses.pop(),
+}));
+
+const mockPrintInvalid = jest.fn();
+jest.mock("../../display/Display", () => {
+  return jest.fn().mockImplementation(() => ({
+    printInvalidOption: mockPrintInvalid,
+  }));
+});
+
+const options = [mockValidResponse, "other valid response"];
 
 describe("Player", () => {
-  it("'ask' calls 'readLineSync.question'", () => {
-    // Given
-    mockQuestion();
-    const player = new Player();
-    // When
-    player.ask();
-    // Then
-    expect(mockedQuestion).toBeCalled();
-  });
-
   it("'ask' returns correct string", () => {
     // Given
-    mockQuestion();
     const player = new Player();
     // When, Then
-    expect(player.ask()).toEqual(response);
+    expect(player.ask(options)).toEqual(mockValidResponse);
+  });
+
+  it("'ask' calls 'Display.printInvalidOption' correctly when incorrect answer given", () => {
+    // Given
+    const player = new Player();
+    // When
+    player.ask(options);
+    // Then
+    expect(mockPrintInvalid).toBeCalledWith(options);
   });
 });
