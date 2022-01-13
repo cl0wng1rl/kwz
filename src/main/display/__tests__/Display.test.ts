@@ -82,7 +82,7 @@ describe("Display", () => {
     // When
     display.printCategory(name, id);
     // Then
-    expect(mockLog).toBeCalledWith(`${name}: ${id}`);
+    expect(mockLog).toBeCalledWith(`${name} - ${id}`);
   });
 
   it("'printInvalidOption' prints correct string", async () => {

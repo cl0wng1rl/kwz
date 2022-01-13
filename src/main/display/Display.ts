@@ -19,7 +19,7 @@ class Display {
   }
 
   public printCategory(name: string, id: number) {
-    this.print(`${name}: ${id}`);
+    this.print(`${name} - ${id}`);
   }
 
   public printInvalidOption(options: string[]) {
