@@ -3,11 +3,15 @@ import Question from "../questions";
 class Display {
   public printQuestion(question: Question) {
     this.print(question.statement);
+    this.break();
     Object.entries(question.options).forEach((value) => this.print(`${value[0]}: ${value[1]}`));
+    this.break();
   }
 
   public printResponse(isCorrect: boolean, correctAnswer: string) {
+    this.break();
     this.print(isCorrect ? "Correct!" : `Wrong! The correct answer is "${correctAnswer}"`);
+    this.break();
   }
 
   public printScore(score: number, total: number) {
@@ -24,6 +28,10 @@ class Display {
 
   private print(message: string): void {
     console.log(message);
+  }
+
+  private break(): void {
+    console.log();
   }
 
   private static getOptionsList(options: string[]) {
