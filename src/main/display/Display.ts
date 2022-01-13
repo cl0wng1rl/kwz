@@ -18,8 +18,17 @@ class Display {
     this.print(`${name}: ${id}`);
   }
 
+  public printInvalidOption(options: string[]) {
+    this.print(`Invalid option! Enter ${Display.getOptionsList(options)}...`);
+  }
+
   private print(message: string): void {
     console.log(message);
+  }
+
+  private static getOptionsList(options: string[]) {
+    const nonFinalString = options.slice(0, options.length - 1).join(", ");
+    return `${nonFinalString} or ${options[options.length - 1]}`;
   }
 }
 
