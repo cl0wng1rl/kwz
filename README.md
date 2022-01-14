@@ -1,10 +1,10 @@
 <div align="center">
-<h1>kwiz</h1>
-  <a href="https://github.com/gabrielbarker/kwiz/actions/workflows/ci.yml">
-    <img src="https://github.com/gabrielbarker/kwiz/actions/workflows/ci.yml/badge.svg"/>
+<h1>kwz</h1>
+  <a href="https://github.com/gabrielbarker/kwz/actions/workflows/ci.yml">
+    <img src="https://github.com/gabrielbarker/kwz/actions/workflows/ci.yml/badge.svg"/>
   </a>
-  <a href="https://codecov.io/gh/gabrielbarker/kwiz">
-    <img src="https://codecov.io/gh/gabrielbarker/kwiz/branch/main/graph/badge.svg"/>
+  <a href="https://codecov.io/gh/gabrielbarker/kwz">
+    <img src="https://codecov.io/gh/gabrielbarker/kwz/branch/main/graph/badge.svg"/>
   </a>
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
@@ -13,7 +13,7 @@
 <b>A terminal-based quiz game!</b>
 
 <a href="#installation">Installation</a> •
-<a href="#using-kwiz">Using kwiz</a> •
+<a href="#using-kwz">Using kwz</a> •
 <a href="#license">License</a>
 
 </div>
@@ -21,24 +21,24 @@
 
 ## Installation
 
-To install _kwiz_, run the following command:
+To install _kwz_, run the following command:
 
 ```
-npm install --global kwiz
+npm install --global kwz
 ```
 
-## Using _kwiz_
+## Using _kwz_
 
-You can play a quiz using _kwiz_ by simply running:
+You can play a quiz using _kwz_ by simply running:
 
 ```
-kwiz
+kwz
 ```
 
 You can set the number of questions, the type of answers, the difficulty of the questions and the category.
 
 ```
-kwiz --number 5 --difficulty hard --category 9 --trueOrFalse
+kwz --number 5 --difficulty hard --category 9 --trueOrFalse
 ```
 
 ### Number of Questions
@@ -62,15 +62,15 @@ The category can be set using the `--category` or ` -c` flag. This flag requires
 The `categories` subcommand returns a list of categories followed by their category code. The categories command looks like:
 
 ```
-kwiz categories
+kwz categories
 ```
 
 ## Help
 
-To get help using _kwiz_, run:
+To get help using _kwz_, run:
 
 ```
-kwiz --help
+kwz --help
 ```
 
 # License

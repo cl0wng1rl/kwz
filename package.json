@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gabrielbarker/kwiz.git"
+    "url": "git+https://github.com/gabrielbarker/kwz.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gabrielbarker/kwiz/issues"
+    "url": "https://github.com/gabrielbarker/kwz/issues"
   },
-  "homepage": "https://github.com/gabrielbarker/kwiz#readme",
+  "homepage": "https://github.com/gabrielbarker/kwz#readme",
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/readline-sync": "^1.4.3",
