@@ -19,7 +19,7 @@ jest.mock("commander", () => ({
     choices: jest.fn((c: string) => ({ default: jest.fn() })),
   })),
   Command: jest.fn(() => ({
-    parse: mockParse,
+    parseAsync: mockParse,
     opts: jest.fn(() => options),
     action: jest.fn().mockReturnThis(),
     addOption: jest.fn().mockReturnThis(),
@@ -32,11 +32,11 @@ jest.mock("commander", () => ({
 const args = ["Argument 1", "Argument 2", "Argument 3"];
 
 describe("CLI", () => {
-  it("'run' calls parse method on program", () => {
+  it("'run' calls parse method on program", async () => {
     // Given
     const cli = new CLI();
     // When
-    cli.run(args);
+    await cli.run(args);
     // Then
     expect(mockParse).toBeCalled();
   });

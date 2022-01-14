@@ -10,12 +10,12 @@ const difficultyOption = new Option(CONSTANTS.difficultyFlags, CONSTANTS.difficu
   .default(CONSTANTS.difficultyDefault, CONSTANTS.difficultyDefaultDescription);
 
 class CLI {
-  public run(args: string[]) {
+  public async run(args: string[]) {
     const program = this.createCommand();
     program.action(App.playQuiz);
     program.addCommand(this.createCategoriesCommand());
 
-    program.parse(args);
+    return program.parseAsync(args);
   }
 
   private createCommand(): Command {
