@@ -38,7 +38,7 @@ kwz
 You can set the number of questions, the type of answers, the difficulty of the questions and the category.
 
 ```
-kwz --number 5 --difficulty hard --category 9 --trueOrFalse
+kwz --number 5 --difficulty hard --category 9 --true-or-false
 ```
 
 ### Number of Questions
