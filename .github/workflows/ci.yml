@@ -41,4 +41,4 @@ jobs:
       - run: git config --global user.name 'Gabriel Barker (CI)'
       - run: git config --global user.email 'gabrielbarker@gmail.com'
       - run: npm version patch -m "[RELEASE] %s"
-      - run: git push
+      - run: git push --tags
