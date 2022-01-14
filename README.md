@@ -6,6 +6,18 @@
   <a href="https://codecov.io/gh/gabrielbarker/kwz">
     <img src="https://codecov.io/gh/gabrielbarker/kwz/branch/main/graph/badge.svg"/>
   </a>
+  <a href="https://github.com/gabrielbarker/kwz/actions/workflows/ci.yml">
+    <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/gabrielbarker/kwz">
+  </a>
+  <a href="https://www.npmjs.com/package/kwz">
+    <img alt="npm" src="https://img.shields.io/npm/v/kwz">
+  </a>
+  <a href="https://www.npmjs.com/package/kwz">
+    <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/kwz">
+  </a>
+  <a href="https://www.npmjs.com/package/kwz">
+    <img alt="npm dependencies" src="https://img.shields.io/librariesio/release/npm/kwz">
+  </a>
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
   </a>
