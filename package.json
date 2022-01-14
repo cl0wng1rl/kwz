@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "A terminal-based quiz game!",
   "main": "./out/index.js",
+  "files": [
+    "out/**/*.js",
+    "!**/*.test.js"
+  ],
   "scripts": {
     "test": "jest --coverage",
     "app": "npm run build && npm run execute",
