@@ -2,6 +2,7 @@
   "name": "kwiz",
   "version": "0.0.0",
   "description": "A terminal-based quiz game!",
+  "bin": "bin/index.js",
   "main": "./out/index.js",
   "files": [
     "out/**/*.js",
@@ -11,7 +12,7 @@
     "test": "jest --coverage",
     "app": "npm run build && npm run execute",
     "build": "tsc",
-    "execute": "node ./out/index.js"
+    "execute": "bin/index.js"
   },
   "repository": {
     "type": "git",
