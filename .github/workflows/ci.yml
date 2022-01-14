@@ -2,11 +2,9 @@ name: CI
 
 on:
   push:
-    tag-ignore:
-      - "v*"
+    branches: [main]
   pull_request:
-    tag-ignore:
-      - "v*"
+    branches: [main]
 
 jobs:
   build:
@@ -41,5 +39,9 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: git config --global user.name 'Gabriel Barker (CI)'
       - run: git config --global user.email 'gabrielbarker@gmail.com'
-      - run: npm version patch
+      - run: NEW_VERSION=$(npm version patch --no-git-tag-version)
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: git tag -a $NEW_VERSION
       - run: git push
