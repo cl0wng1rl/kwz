@@ -2,11 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
     tag-ignore:
       - "v*"
   pull_request:
-    branches: [main]
     tag-ignore:
       - "v*"
 
