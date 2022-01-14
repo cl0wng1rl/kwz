@@ -1,8 +1,8 @@
 {
   "name": "kwiz",
   "version": "0.0.0",
-  "description": "A terminal quiz game.",
-  "main": "index.js",
+  "description": "A terminal-based quiz game!",
+  "main": "./out/index.js",
   "scripts": {
     "test": "jest --coverage",
     "app": "npm run build && npm run execute",
