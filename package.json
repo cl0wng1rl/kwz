@@ -1,6 +1,6 @@
 {
   "name": "kwz",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "A terminal-based quiz game!",
   "bin": "bin/index.js",
   "main": "./out/index.js",
