@@ -43,5 +43,5 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: git tag -a $NEW_VERSION
+      - run: git tag $NEW_VERSION
       - run: git push
