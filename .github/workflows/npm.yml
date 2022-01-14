@@ -6,7 +6,7 @@ on:
     tags:
       - "v*"
 
-obs:
+jobs:
   build:
     runs-on: ubuntu-latest
     environment: CI
